@@ -104,3 +104,6 @@ This script:
 # Important Cloud Foundry CLI Commands
 [important-cf-commands.md](important-cf-commands.md)
 
+# Example GitHub Actions Workflow File
+[example_github_workflow.yaml](example_github_workflow.yaml)
+
