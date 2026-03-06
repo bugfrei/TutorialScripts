@@ -101,3 +101,6 @@ This script:
 - Uses `fzf` for interactive selection
 - Automatically executes:
   
+# Important Cloud Foundry CLI Commands
+[important-cf-commands.md](important-cf-commands.md)
+
