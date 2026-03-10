@@ -1,0 +1,13 @@
+<mvc:View controllerName="tutui5.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content >
+       <!-- Create a title with "UI5 App V1" and a list from unnamed model, entity BOoks and columns ID, title and stock, use ObjectListItem -->
+         <Title text="UI5 App V7" />
+            <List items="{/Books}">
+                <ObjectListItem title="{title}" number="{stock}" numberUnit="Stock" />
+            </List> 
+            </content>
+    </Page>
+</mvc:View>

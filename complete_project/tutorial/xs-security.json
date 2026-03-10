@@ -1,0 +1,56 @@
+{
+    "xsappname": "tutorial",
+    "tenant-mode": "dedicated",
+    "oauth2-configuration": {
+        "redirect-uris": [
+            "https://suportis-ag-demo-dev-psdpn57u-dev-tutorial.cfapps.eu10-004.hana.ondemand.com/**",
+            "https://suportis-ag-demo-qs-7hg2mpoe-qs-tutorial.cfapps.eu10-004.hana.ondemand.com/**",
+            "https://suportis-ag-demo-prod-wqz1augj-prod-tutorial.cfapps.eu10-004.hana.ondemand.com/**"
+        ]
+    },
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.user",
+            "description": "user"
+        },
+        {
+            "name": "$XSAPPNAME.admin",
+            "description": "admin"
+        }
+    ],
+    "attributes": [],
+    "role-templates": [
+        {
+            "name": "user",
+            "description": "generated",
+            "scope-references": [
+                "$XSAPPNAME.user"
+            ],
+            "attribute-references": []
+        },
+        {
+            "name": "admin",
+            "description": "generated",
+            "scope-references": [
+                "$XSAPPNAME.admin"
+            ],
+            "attribute-references": []
+        }
+    ],
+    "role-collections": [
+        {
+            "name": "TutorialDemo-User",
+            "description": "User Role",
+            "role-template-references": [
+                "$XSAPPNAME.user"
+            ]
+        },
+        {
+            "name": "TutorialDemo-Admin",
+            "description": "Admin Role",
+            "role-template-references": [
+                "$XSAPPNAME.admin"
+            ]
+        }
+    ]
+}
