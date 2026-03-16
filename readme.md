@@ -101,11 +101,20 @@ This script:
 - Uses `fzf` for interactive selection
 - Automatically executes:
   
+### tinysample.ps1
+
+Creates a tiny sample Files in an empty CDS Project (`cds init --nodejs`). Just execute this PowerShell script in the root of your empty CDS project.
+
+
 # Important Cloud Foundry CLI Commands
 [important-cf-commands.md](important-cf-commands.md)
 
 # Example GitHub Actions Workflow File
 [example_github_workflow.yaml](example_github_workflow.yaml)
+
+# Example Git Config File
+[gitconfig.md](gitconfig.md)
+
 
 # YouTube Playlist for the SUPORTIS SAP BTP Tutorial Series
 
