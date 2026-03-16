@@ -101,7 +101,7 @@ This script:
 - Uses `fzf` for interactive selection
 - Automatically executes:
   
-### tinysample.ps1
+### 5️⃣ tinysample.ps1
 
 Creates a tiny sample Files in an empty CDS Project (`cds init --nodejs`). Just execute this PowerShell script in the root of your empty CDS project.
 
