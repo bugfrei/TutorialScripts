@@ -115,6 +115,12 @@ Creates a tiny sample Files in an empty CDS Project (`cds init --nodejs`). Just 
 # Example Git Config File
 [gitconfig.md](gitconfig.md)
 
+# Example NeoVIM Config File
+Add content this tu the file `~/.config/nvim/init.lua` or under Windows `~\AppData\Local\nvim\init.lua`:
+With `New-Item -ItemType File -Path ~\AppData\Local\nvim\init.lua -Force` you can create an empty file and all directories if they does not exist.
+[nvim_config.md](nvim_config.md)
+
+
 
 # YouTube Playlist for the SUPORTIS SAP BTP Tutorial Series
 
