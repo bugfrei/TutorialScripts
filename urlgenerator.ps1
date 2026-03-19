@@ -1,6 +1,9 @@
-# Paste this function into your PowerShell directory, to be able to call it. 
+# Paste this function into your PowerShell Core, to be able to call it. 
 # Alternatively, you can dot-source the file in your current session: . ./urlgenerator.ps1
 # You can also add it to your profile ($profile) to have it available in every session.
+#
+# IT MUST BE THE POWERSHELL CORE - NOT WINDOWS POWERSHELL
+# Install PowerShell Core with : Choco install powershell-core -y
 #
 # Usage:
 # urlgen -Copy
@@ -45,14 +48,17 @@ function urlgen {
         $ProjectPath = (Get-Location).Path
     }
     if ($SelectTarget) {
-        $org =  (cf orgs | Select-Object -Skip 3 | fzf --prompt "Org wählen")
+        $org =  (cf orgs | Select-Object -Skip 3 | fzf --prompt "Select Org")
         cf target -o $org
         $spaces = (cf spaces | Select-Object -Skip 3)
         if ($spaces.Count -gt 1) {
-            $space = $spaces | fzf --prompt "Select space"
+            $space = $spaces | fzf --prompt "Select Space"
             cf target -s $space
         }
     }
+
+    # TEST - DELETE THIS
+    #$ProjectPath = "/Users/carstenschlegel/Coding/Projekte/Hauptprojekte/Codiac/Tests/versuch2"
 
     $manifests = (dir "$ProjectPath/app/*/webapp/manifest.json" | ForEach-Object { $id=(Get-Content $_ -Raw | ConvertFrom-Json -AsHashtable).'sap.app'.id; [pscustomobject]@{ id = $id; urlid = $id.Replace(".","") } } )
     if (!($manifests -is [array])) {
@@ -85,7 +91,7 @@ function urlgen {
         }
         elseif ($manifests.Count -eq 0) 
         { 
-            Write-Host "No Manifest-Files found in Project!" -ForegroundColor Red
+            Write-Host "No Manifest-File in project found!" -ForegroundColor Red
             return
         }
         else 
@@ -113,7 +119,11 @@ function urlgen {
                     $finalUrl | scb
                 }
                 else {
-                    arc-cli new-tab $finalUrl
+                    if ((get-command arc-cli -ErrorAction SilentlyContinue).Count -eq 0) {
+                      Start-Process $finalUrl
+                    } else {
+                      arc-cli new-tab $finalUrl
+                    }
                 }
                 return $finalUrl
             }
@@ -124,7 +134,11 @@ function urlgen {
                     $finalUrl | scb
                 }
                 else {
-                    arc-cli new-tab $finalUrl
+                    if ((get-command arc-cli -ErrorAction SilentlyContinue).Count -eq 0) {
+                      Start-Process $finalUrl
+                    } else {
+                      arc-cli new-tab $finalUrl
+                    }
                 }
                 return $finalUrl
             }
