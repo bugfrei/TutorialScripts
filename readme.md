@@ -121,6 +121,17 @@ With `New-Item -ItemType File -Path ~\AppData\Local\nvim\init.lua -Force` you ca
 [nvim_config.md](nvim_config.md)
 
 
+# UI5 App View Source Code snippet
+
+[ui5app_view.xml](ui5app_view.xml)
+```
+        <content >
+         <Title text="UI5 App V1" />
+            <List items="{/Books}">
+                <ObjectListItem title="{title}" number="{stock}" numberUnit="Stock" />
+            </List> 
+        </content>
+```
 
 # YouTube Playlist for the SUPORTIS SAP BTP Tutorial Series
 

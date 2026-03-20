@@ -1,0 +1,6 @@
+        <content >
+         <Title text="UI5 App V1" />
+            <List items="{/Books}">
+                <ObjectListItem title="{title}" number="{stock}" numberUnit="Stock" />
+            </List> 
+        </content>
