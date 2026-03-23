@@ -28,15 +28,11 @@ jobs:
         # remove here the 'cache: "npm" line (from a GitHub Template) if you don't want to use caching (takes a lot of time and space)
     - run: npm ci
     - name: Build 
-      run: mbt build
+      run: mbt build --mtar archive.mtar
     - name: Deploy to Cloud Foundry
-      run: |
-        cf login -a ${{ secrets.CF_APIURL }} \
-           -u ${{ secrets.CF_USERNAME }} \
-           -p ${{ secrets.CF_PASSWORD }} \
-           -o SUPORTIS_AG_demo-dev-psdpn57u \
-           -s dev
-        cf deploy mta_archives/*.mtar
+      # Everything in ONE line. cf login and cf deploy commands are executed in the same step, so you must write ; between them.
+      # This works also under Windows, Mac and Linux
+      run: cf login -a ${{ secrets.CF_APIURL }} -u ${{ secrets.CF_USERNAME }} -p ${{ secrets.CF_PASSWORD }} -o SUPORTIS_AG_demo-dev-psdpn57u -s dev; cf deploy mta_archives/archive.mtar
     - name: Push Message
       run: curl -d "Deployment finished" (ntfy-url)
 

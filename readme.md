@@ -105,12 +105,53 @@ This script:
 
 Creates a tiny sample Files in an empty CDS Project (`cds init --nodejs`). Just execute this PowerShell script in the root of your empty CDS project.
 
+Or you create this files manually:
+
+File: `db/schema.cds`
+```
+namespace my.bookshop;
+
+entity Books {
+  key ID : Integer;
+  title  : String;
+  stock  : Integer;
+}
+```
+
+File: `db/data/my.bookshop-Books.csv`
+```
+ID,title,stock
+1,Wuthering Heights,100
+2,Jane Eyre,500
+```
+
+File: `srv/cat-service.cds`
+```
+using my.bookshop as my from '../db/schema';
+
+service CatalogService {
+    @readonly entity Books as projection on my.Books;
+}
+```
+
 
 # Important Cloud Foundry CLI Commands
 [important-cf-commands.md](important-cf-commands.md)
 
 # Example GitHub Actions Workflow File
-[example_github_workflow.yaml](example_github_workflow.yaml)
+
+Please remember that a line break with \ does not work under Windows. Here everything must be written on one line.
+There is a Windows version of the workflow file for this purpose.
+
+It is best to create the mtar archive with
+`mbt build --mtar archive.mtar`
+
+This way, you can explicitly use this file during deployment:
+`cf deploy mta_archives/archive.mtar`
+
+
+[example_github_workflow_mac.yaml](example_github_workflow_mac.yaml)
+[example_github_workflow_windows.yaml](example_github_workflow_windows.yaml)
 
 # Example Git Config File
 [gitconfig.md](gitconfig.md)
